@@ -6,6 +6,8 @@ import com.sparta.hanghaemarket.entity.Item;
 import com.sparta.hanghaemarket.repository.ItemRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.json.JSONObject;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -33,7 +35,9 @@ public class ItemService {
     public String deleteItem(Long id) {
         Item item = findItem(id);
         itemRepository.delete(item);
-        return "삭제 완료";
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("msg", "삭제 완료");
+        return jsonObject.toString();
     }
     private Item findItem(Long id) {
         return itemRepository.findById(id).orElseThrow(() ->
