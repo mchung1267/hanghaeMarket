@@ -17,24 +17,24 @@ public class Item {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column (name="username", nullable = false)
     private String username;
 
-    @Column
+    @Column (name="title", nullable = false)
     private String title;
 
-    @Column
+    @Column (name="content", nullable = false)
     private String content;
 
-    @Column
+    @Column (name="price", nullable = false)
     private int price;
 
 
     public Item(ItemRequestDto requestDto) {
-        this.username = username;
-        this.title = title;
-        this.content = content;
-        this.price = price;
+        this.username = requestDto.getUsername();
+        this.title = requestDto.getTitle();
+        this.content = requestDto.getContent();
+        this.price = requestDto.getPrice();
     }
 
     public void update(ItemRequestDto requestDto) {
