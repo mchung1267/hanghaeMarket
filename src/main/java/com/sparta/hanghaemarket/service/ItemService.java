@@ -37,6 +37,7 @@ public class ItemService {
     public String deleteItem(Long id) {
         Item item = findItem(id);
         itemRepository.delete(item);
+        //과제에서의 요구 사항에 따라 JSON 형식으로 응답 표시
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("msg", "삭제 완료");
         return jsonObject.toString();
