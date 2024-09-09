@@ -1,9 +1,11 @@
 package com.sparta.hanghaemarket.controller;
 
+import com.sparta.hanghaemarket.dto.ItemListDto;
 import com.sparta.hanghaemarket.dto.ItemRequestDto;
 import com.sparta.hanghaemarket.dto.ItemResponseDto;
 import com.sparta.hanghaemarket.service.ItemService;
 import jakarta.transaction.Transactional;
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public class ItemController {
         return itemService.createItem(itemDto);
     }
     @GetMapping("/post")
-    public List<ItemResponseDto> getAllItems() {
+    public List<ItemListDto> getAllItems() {
         return itemService.getMemos();
     }
     @PutMapping("/post/{id}")

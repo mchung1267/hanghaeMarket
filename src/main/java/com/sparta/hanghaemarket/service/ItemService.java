@@ -1,5 +1,6 @@
 package com.sparta.hanghaemarket.service;
 
+import com.sparta.hanghaemarket.dto.ItemListDto;
 import com.sparta.hanghaemarket.dto.ItemRequestDto;
 import com.sparta.hanghaemarket.dto.ItemResponseDto;
 import com.sparta.hanghaemarket.entity.Item;
@@ -16,8 +17,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository itemRepository;
-    public List<ItemResponseDto> getMemos() {
-        return itemRepository.findAll().stream().map(ItemResponseDto::new).toList();
+    private final JdbcTemplate jdbcTemplate;
+    public List<ItemListDto> getMemos() {
+        return itemRepository.findAll().stream().map(ItemListDto::new).toList();
     }
     public ItemResponseDto createItem(ItemRequestDto requestDto) {
         Item item = new Item(requestDto);
